@@ -42,6 +42,9 @@ PRODUCT_PACKAGES += FlipFlap
 # Gesture Handler
 PRODUCT_PACKAGES += GestureHandler
 
+# Gesture Handler
+PRODUCT_PACKAGES += GestureHandler
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \

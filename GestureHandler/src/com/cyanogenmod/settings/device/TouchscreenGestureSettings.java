@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2016 The CyanogenMod Project
- *               2017 The LineageOS Project
+ * Copyright (C) 2015 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +14,39 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device;
+package com.cyanogenmod.settings.device;
 
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.support.v14.preference.PreferenceFragment;
+import android.preference.PreferenceActivity;
 import android.view.MenuItem;
 
-public class TouchscreenGestureSettingsFragment extends PreferenceFragment {
+import org.cyanogenmod.internal.util.ScreenType;
+
+public class TouchscreenGestureSettings extends PreferenceActivity {
 
     @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.gesture_panel);
-        final ActionBar actionBar = getActivity().getActionBar();
+        final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // If running on a phone, remove padding around the listview
+        if (!ScreenType.isTablet(this)) {
+            getListView().setPadding(0, 0, 0, 0);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            getActivity().onBackPressed();
+            onBackPressed();
             return true;
         }
         return false;
