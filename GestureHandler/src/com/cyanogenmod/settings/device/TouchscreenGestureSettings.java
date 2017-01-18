@@ -19,7 +19,7 @@ package com.cyanogenmod.settings.device;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
-import org.cyanogenmod.internal.util.ScreenType;
+import com.cyanogenmod.settings.device.ScreenType;
 
 public class TouchscreenGestureSettings extends PreferenceActivity {
 
