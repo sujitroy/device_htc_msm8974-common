@@ -1,4 +1,4 @@
-[AID_QCOM_DIAG]
+[DIAG]
 value:2950
 
 [AID_RFS]
